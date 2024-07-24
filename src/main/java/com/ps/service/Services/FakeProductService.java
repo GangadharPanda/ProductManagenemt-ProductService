@@ -49,6 +49,11 @@ public class FakeProductService implements IProductService {
 
     @Override
     public void deleteProduct(Long id) {
-        restTemplate.delete("https://fakestoreapi.com/products/" + id);
+        //boolean isValid = restTemplate.getForObject("http://localhost:8090/auth/validate/test", Boolean.class);
+        boolean isValid = restTemplate.getForObject("http://AUTHSERVICE/auth/validate/test", Boolean.class);
+        if (isValid) {
+            System.out.println("Deleting product after Validating it from Auth Service");
+        }
+        //restTemplate.delete("https://fakestoreapi.com/products/" + id);
     }
 }
