@@ -104,3 +104,30 @@ This code will save both category and product both.
 It will save a product against the existing category
 
 ------------
+        
+
+VERY IMPORTANT:
+
+```java
+public class ProductController {
+
+    @Autowired
+    private IProductService productService;
+    // Variable name matches the implementation class name,
+    // so it will autowire the ProductService.
+    
+}    
+
+// The code base have two Product Services that implements **IProductService**
+
+public class FakeProductService implements IProductService {}
+public class ProductService implements IProductService {}
+
+But my code is working fine without @Primary or @Qualifier annotation
+How?
+
+Because there is another way known as Bean Name autowiring
+
+// For a fallback match, the bean name is considered a default qualifier value.
+
+```
