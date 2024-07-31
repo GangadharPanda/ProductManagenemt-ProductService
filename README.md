@@ -72,3 +72,35 @@ public void deleteProduct(Long id) {
 
 **Note** : Now this service is dependent on two more services , AuthService and Service Discovery (Eureka Server).We will need both those servers running before starting this one. 
 
+
+Test Saving Products 
+
+Case 1 : With new Category
+```json
+{
+"title": "iPhone 14 Pro",
+"price": 154000.00,
+"description": "The iPhone is a series of smartphones made by Apple Inc since 2007. It is a mobile phone, meaning that it makes calls and sends text messages without wires.",
+"category": {
+"categoryName":" Latest Iphone"
+},
+"image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
+}
+```
+
+This code will save both category and product both.
+```json
+{
+  "title": "iPhone 13 Pro",
+  "price": 114000.00,
+  "description": "The iPhone 13 is a series of smartphones made by Apple Inc since 2007. It is a mobile phone, meaning that it makes calls and sends text messages without wires.",
+  "category": {
+    "id": 1,
+    "categoryName":" Latest Iphone"
+  },
+  "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
+}
+```
+It will save a product against the existing category
+
+------------

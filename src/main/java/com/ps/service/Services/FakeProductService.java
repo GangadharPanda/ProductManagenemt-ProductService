@@ -43,14 +43,14 @@ public class FakeProductService implements IProductService {
     public Product updateProduct(Product product) {
         System.out.println("Updating product");
         RequestCallback requestCallback = restTemplate.httpEntityCallback(product, Product.class);
-        HttpMessageConverterExtractor<Product> responseExtractor = new HttpMessageConverterExtractor(Product.class, restTemplate.getMessageConverters());
+        HttpMessageConverterExtractor<Product> responseExtractor = new HttpMessageConverterExtractor<>(Product.class, restTemplate.getMessageConverters());
         return restTemplate.execute("https://fakestoreapi.com/products/", HttpMethod.PUT, requestCallback, responseExtractor);
     }
 
     @Override
     public void deleteProduct(Long id) {
         //boolean isValid = restTemplate.getForObject("http://localhost:8090/auth/validate/test", Boolean.class);
-        boolean isValid = restTemplate.getForObject("http://AUTHSERVICE/auth/validate/test", Boolean.class);
+        boolean isValid = Boolean.TRUE.equals(restTemplate.getForObject("http://AUTHSERVICE/auth/validate/test", Boolean.class));
         if (isValid) {
             System.out.println("Deleting product after Validating it from Auth Service");
         }

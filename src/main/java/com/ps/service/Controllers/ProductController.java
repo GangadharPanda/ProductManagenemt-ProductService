@@ -1,7 +1,8 @@
 package com.ps.service.Controllers;
 
-import com.ps.service.DTOs.ProductDTO;
 import com.ps.service.Entities.Product;
+import com.ps.service.ErroCodes.ErroCodes;
+import com.ps.service.Exceptions.ProductNotFoundException;
 import com.ps.service.Services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,10 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable("id") Long id) {
+        Product product = productService.getProductById(id);
+        if(product == null){
+            throw new ProductNotFoundException(ErroCodes.GET_FAIL,"Product not found");
+        }
         return productService.getProductById(id);
     }
 
