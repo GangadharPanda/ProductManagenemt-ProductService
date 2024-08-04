@@ -123,10 +123,10 @@ public class ProductController {
 public class FakeProductService implements IProductService {}
 public class ProductService implements IProductService {}
 
-But my code is working fine without @Primary or @Qualifier annotation
-How?
+// But my code is working fine without @Primary or @Qualifier annotation
+// How?
 
-Because there is another way known as Bean Name autowiring
+// Because there is another way known as Bean Name autowiring
 
 // For a fallback match, the bean name is considered a default qualifier value.
 
